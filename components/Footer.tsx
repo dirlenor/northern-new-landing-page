@@ -1,44 +1,119 @@
-import React from 'react';
-
-const Footer: React.FC = () => {
+export default function Footer() {
   return (
-    <footer className="bg-[#05080a] border-t border-white/5 py-32">
-      <div className="container mx-auto px-6 max-w-[1400px]">
-        <div className="grid grid-cols-1 md:grid-cols-3 items-end gap-20">
-          <div>
-            <h4 className="text-4xl font-serif italic text-white mb-10">Aether.</h4>
-            <p className="text-white/20 text-sm max-w-xs leading-relaxed uppercase tracking-widest font-medium">
-              Sanctuary and solitude across the globe's most ethereal landscapes.
+    <footer className="bg-navy-900 text-white py-16 relative overflow-hidden">
+      {/* Decorative gradient */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#A683BD] via-[#8B79B6] to-[#2A3F8B]"></div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+          {/* Brand Column */}
+          <div className="lg:col-span-2">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-10 h-10 bg-gradient-to-br from-[#A683BD] to-[#2A3F8B] rounded-lg flex items-center justify-center text-white font-bold text-lg">
+                N
+              </div>
+              <span className="text-xl font-display font-bold">Northern All Star</span>
+            </div>
+            <p className="text-navy-300 leading-relaxed mb-6">
+              Elevating Thai tourism to international standards through authenticity, quality, and sustainable growth.
             </p>
-          </div>
-          <div className="flex flex-col gap-4 text-xs uppercase tracking-[0.3em] font-bold text-white/40">
-            <a href="#" className="hover:text-white transition-colors">Journal</a>
-            <a href="#" className="hover:text-white transition-colors">Private Hire</a>
-            <a href="#" className="hover:text-white transition-colors">Membership</a>
-            <a href="#" className="hover:text-white transition-colors">Contact</a>
-          </div>
-          <div className="text-right flex flex-col items-end">
-            <div className="text-white/20 text-[10px] uppercase tracking-widest mb-4">Newsletter</div>
-            <div className="flex border-b border-white/10 w-full md:w-80">
-              <input 
-                type="email" 
-                placeholder="EMAIL ADDRESS" 
-                className="bg-transparent border-none py-4 text-[10px] tracking-widest outline-none w-full text-white"
-              />
-              <button className="text-white px-4">→</button>
+            <div className="flex gap-4">
+              {["Facebook", "Instagram", "LinkedIn"].map((social) => (
+                <a
+                  key={social}
+                  href="#"
+                  className="w-10 h-10 bg-navy-800 hover:bg-gradient-to-br hover:from-[#A683BD] hover:to-[#2A3F8B] rounded-lg flex items-center justify-center transition-colors duration-300"
+                  aria-label={social}
+                >
+                  <span className="text-xs font-semibold">{social[0]}</span>
+                </a>
+              ))}
             </div>
           </div>
+
+          {/* Company Column */}
+          <div>
+            <h3 className="font-bold text-lg mb-4 text-primary-400">Company</h3>
+            <ul className="space-y-3">
+              {[
+                { label: "About Us", href: "#about" },
+                { label: "What We Do", href: "#what-we-do" },
+                { label: "Our Approach", href: "#approach" },
+                { label: "Vision", href: "#vision" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className="text-navy-300 hover:text-primary-400 transition-colors duration-300"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Brands Column */}
+          <div>
+            <h3 className="font-bold text-lg mb-4 text-primary-400">Brands</h3>
+            <ul className="space-y-3">
+              <li>
+                <a href="#brand" className="text-navy-300 hover:text-primary-400 transition-colors duration-300">
+                  Neptune Boat & Leisure
+                </a>
+              </li>
+              <li>
+                <a href="#services" className="text-navy-300 hover:text-primary-400 transition-colors duration-300">
+                  Services
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Column */}
+          <div>
+            <h3 className="font-bold text-lg mb-4 text-primary-400">Contact</h3>
+            <ul className="space-y-3 text-navy-300">
+              <li className="flex items-start gap-2">
+                <span>📧</span>
+                <a
+                  href="mailto:contact@northernallstar.com"
+                  className="hover:text-primary-400 transition-colors"
+                >
+                  contact@northernallstar.com
+                </a>
+              </li>
+              <li className="flex items-start gap-2">
+                <span>📍</span>
+                <span>Thailand</span>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div className="mt-40 flex justify-between items-center text-[10px] text-white/10 tracking-[0.4em] uppercase font-bold">
-           <span>&copy; {new Date().getFullYear()} AETHER SANCTUARY</span>
-           <div className="flex gap-10">
-              <a href="#">Privacy</a>
-              <a href="#">Terms</a>
-           </div>
+
+        {/* Destinations */}
+        <div className="border-t border-navy-800 pt-8 mb-8">
+          <h4 className="text-sm font-semibold text-primary-400 mb-4">OUR DESTINATIONS</h4>
+          <div className="flex flex-wrap gap-3">
+            {["Chiang Rai", "Chiang Mai", "Bangkok", "Pattaya", "Samui", "Krabi", "Phuket", "Phang Nga"].map((dest) => (
+              <span key={dest} className="text-sm text-navy-400 hover:text-primary-400 transition-colors cursor-pointer">
+                {dest}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="border-t border-navy-800 pt-8 text-center">
+          <p className="text-navy-400 text-sm">
+            &copy; {new Date().getFullYear()} Northern All Star. All rights reserved.
+            <span className="mx-2">•</span>
+            <a href="#" className="hover:text-primary-400 transition-colors">Privacy Policy</a>
+            <span className="mx-2">•</span>
+            <a href="#" className="hover:text-primary-400 transition-colors">Terms of Service</a>
+          </p>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

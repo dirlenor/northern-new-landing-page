@@ -1,28 +1,43 @@
-import React from 'react';
+"use client";
 
-const Vision: React.FC = () => {
+import Section from "./Section";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+
+export default function Vision() {
+  const ref = useScrollReveal();
+
   return (
-    <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=2070&auto=format&fit=crop" 
-          className="w-full h-full object-cover filter brightness-[0.3]"
-          alt="Vision background"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#05080a] via-transparent to-[#05080a]"></div>
-      </div>
-      
-      <div className="relative z-10 text-center px-6 max-w-3xl space-y-8">
-        <span className="text-[10px] font-bold uppercase tracking-[0.6em] text-[#bfdce0]">Our Ethos</span>
-        <h2 className="text-4xl md:text-6xl font-extralight text-white leading-tight tracking-tighter">
-          To harmonize the <span className="italic">intelligence</span> of the future with the <span className="italic">silence</span> of the earth.
-        </h2>
-        <p className="text-white/40 text-sm md:text-base font-light tracking-widest leading-loose uppercase">
-          Preservation • Immersion • Solitude
-        </p>
-      </div>
-    </section>
-  );
-};
+    <Section
+      id="vision"
+      title="Our Vision"
+      subtitle="Looking Forward"
+      className="bg-gradient-to-br from-navy-900 via-navy-800 to-[#2A3F8B] text-white relative overflow-hidden"
+    >
+      {/* Decorative elements */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#A683BD] rounded-full mix-blend-soft-light filter blur-3xl opacity-20"></div>
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#2A3F8B] rounded-full mix-blend-soft-light filter blur-3xl opacity-20"></div>
 
-export default Vision;
+      <div ref={ref} className="reveal max-w-4xl mx-auto text-center relative z-10">
+        <p className="text-2xl md:text-3xl lg:text-4xl font-display font-medium leading-relaxed mb-12 text-primary-100">
+          To become a leading Thai travel group that connects local experiences with global travelers — and helps shape the future of tourism in Southeast Asia.
+        </p>
+        <div className="w-24 h-1 bg-gradient-to-r from-[#A683BD] to-[#2A3F8B] mx-auto mb-12"></div>
+        <div className="grid md:grid-cols-3 gap-8 mt-12">
+          {[
+            { text: "Building better journeys.", icon: "🌏" },
+            { text: "Growing together.", icon: "🤝" },
+            { text: "Moving Thailand forward.", icon: "🚀" },
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="group p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-primary-400/50 transition-all duration-300 hover:scale-105"
+            >
+              <div className="text-4xl mb-3">{item.icon}</div>
+              <p className="text-lg font-semibold text-white">{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Section>
+  );
+}
