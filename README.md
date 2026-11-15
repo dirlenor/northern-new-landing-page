@@ -26,7 +26,7 @@ python3 -m http.server 4173 --bind 127.0.0.1
 
 ใส่ภาพ P01–P12 ที่ผู้ใช้ส่งมาแล้ว: Hero, About, NovaTrip, Neptune และ Destinations 8 จุดหมาย โดยแปลงภาพถ่ายเป็น WebP รวมประมาณ 4.1 MB จาก PNG ต้นฉบับประมาณ 32.8 MB ภาพเก็บใน `assets/photos/`
 
-ใช้โลโก้ Northern รุ่นสีใน Header และรุ่นขาวใน Footer พร้อมโลโก้ Neptune ไฟล์โลโก้เก็บตามต้นฉบับใน `assets/brands/` แสดงโดยไม่ยืดสัดส่วน ใช้หน้าต่าง CSS ซ่อนขอบแคนวาสว่างของ Northern และใช้ screen blending แสดงรุ่นขาวบนพื้นน้ำเงิน
+ใช้โลโก้ Northern รุ่นขาวแนวนอนใน Header ที่วางทับภาพ Hero และรุ่นขาวแนวตั้งใน Footer พร้อมโลโก้ Neptune ไฟล์โลโก้เก็บใน `assets/brands/` แสดงโดยไม่ยืดสัดส่วน รุ่นแนวนอนจัดเรียงจากรูปทรงต้นฉบับ ส่วน Footer ใช้หน้าต่าง CSS ซ่อนขอบแคนวาสว่างและ screen blending บนพื้นม่วงเข้ม
 
 โลโก้พาร์ทเนอร์ใส่แล้ว 8 ราย ได้แก่ Klook, GetYourGuide, KKday, Trip.com, Central Pattana, Headout, Pelago และ Viator โดย KKday ใช้ SVG สีเดิมจาก [เว็บไซต์ทางการ](https://www.kkday.com/static/en/about/TermsAndConditions.html) ที่ดึงเมื่อ 15 พฤศจิกายน 2026 และไฟล์ Central ที่ได้รับเป็น Central Pattana จึงแสดงตามไฟล์จริง แม้บรีฟเดิมระบุ Central Pattaya ส่วน Trip.com เปลี่ยนจากภาพที่มีลายตารางเป็น [SVG พื้นหลังโปร่งใสจาก Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Trip.com_logo.svg) แล้ว
 
@@ -61,3 +61,13 @@ python3 check.py
 โลโก้ใน navbar จัดเป็นแนวนอนแล้ว โดยใช้สัญลักษณ์และตัวอักษรจากภาพต้นฉบับ ไม่วาดใหม่ ไฟล์ `assets/brands/northern-horizontal-white.svg` และ `.png` มีพื้นโปร่งใส; Footer ยังคงโลโก้แนวตั้ง
 
 ปุ่ม Watch Video ข้าง CTA ของ NovaTrip และ B2B เปิดวิดีโอตามไฟล์ที่ลูกค้าส่งใน native dialog รองรับปุ่มปิด, Escape และคลิกพื้นที่ด้านนอก เมื่อปิดจะหยุดเล่นและคืนโฟกัสให้ปุ่มเดิม ไฟล์ใน `assets/videos/` ใช้ H.264/AAC ต้นฉบับและย้าย metadata ไว้ต้นไฟล์ (fast start) โดยไม่บีบอัดซ้ำ โหลดวิดีโอเมื่อกดปุ่มเท่านั้น
+
+## รันบน VPS
+
+ใช้ Node.js 18 ขึ้นไป รัน `node server.js` (พอร์ตเริ่มต้น 3003, เปลี่ยนด้วยตัวแปร `PORT`) ไม่มี dependency เพิ่ม ไม่ต้อง build
+
+- `server.js`: เสิร์ฟเฉพาะหน้าเว็บและ assets พร้อม MIME types และ byte ranges สำหรับวิดีโอ
+- `ecosystem.config.cjs`: PM2 ชื่อ `northern-2026` พอร์ต 3003
+- `DEPLOY.md`: ขั้นตอนติดตั้ง ทดลอง สลับจากโปรเซสเดิม และย้อนกลับบน Windows VPS
+- `node --test server.test.js`: ตรวจ HTTP, video ranges และการปิดกั้นไฟล์ภายใน
+- `SITE_URL=http://127.0.0.1:3003/ python3 check.py`: ตรวจหน้าเว็บผ่าน HTTP (ตัวอย่าง shell บน macOS/Linux)

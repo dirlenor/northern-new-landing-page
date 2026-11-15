@@ -1,10 +1,12 @@
 """Run: python3 check.py (requires Playwright and Chromium)."""
+import os
 import tempfile
 from pathlib import Path
 from html.parser import HTMLParser
 from playwright.sync_api import sync_playwright, expect
 
 ROOT = Path(__file__).resolve().parent
+SITE_URL = os.environ.get('SITE_URL', (ROOT / 'index.html').as_uri())
 ARTIFACTS = Path(tempfile.gettempdir()) / 'northern-preview'
 ARTIFACTS.mkdir(exist_ok=True)
 
@@ -32,7 +34,7 @@ with sync_playwright() as p:
     page = browser.new_page(viewport={'width': 1440, 'height': 1000}, reduced_motion='reduce')
     errors = []
     page.on('pageerror', lambda error: errors.append(str(error)))
-    page.goto((ROOT / 'index.html').as_uri())
+    page.goto(SITE_URL)
     page.evaluate('document.fonts.ready')
     page.locator('img[loading="lazy"]').evaluate_all('(images) => images.forEach(image => image.loading = "eager")')
     page.wait_for_function('Array.from(document.images).every(image => image.complete)')
@@ -80,7 +82,7 @@ with sync_playwright() as p:
 
     page.set_viewport_size({'width': 1440, 'height': 1000})
     page.get_by_role('navigation').get_by_role('link', name='Our Brands', exact=True).click()
-    expect(page).to_have_url((ROOT / 'index.html').as_uri() + '#brands')
+    expect(page).to_have_url(SITE_URL + '#brands')
     expect(page.get_by_role('navigation').get_by_role('link', name='Our Brands', exact=True)).to_have_attribute('aria-current', 'location')
     page.locator('.neptune-details summary').click()
     expect(page.locator('.neptune-details')).to_have_attribute('open', '')
@@ -126,7 +128,7 @@ with sync_playwright() as p:
     expect(page.get_by_role('navigation')).to_be_visible()
     page.get_by_role('navigation').get_by_role('link', name='Contact', exact=True).click()
     expect(page.get_by_role('navigation')).not_to_be_visible()
-    expect(page).to_have_url((ROOT / 'index.html').as_uri() + '#contact')
+    expect(page).to_have_url(SITE_URL + '#contact')
     page.get_by_role('button', name='Open menu', exact=True).click()
     page.keyboard.press('Escape')
     expect(page.locator('.menu-toggle')).to_be_focused()
