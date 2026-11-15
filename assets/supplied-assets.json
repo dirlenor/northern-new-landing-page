@@ -1,0 +1,147 @@
+[
+  {
+    "source": "p01.png",
+    "file": "assets/photos/hero-thailand.webp",
+    "slot": "hero-thailand"
+  },
+  {
+    "source": "p02.png",
+    "file": "assets/photos/about-local-expertise.webp",
+    "slot": "about-local-expertise"
+  },
+  {
+    "source": "p03.png",
+    "file": "assets/photos/brand-novatrip.webp",
+    "slot": "brand-novatrip"
+  },
+  {
+    "source": "p04.png",
+    "file": "assets/photos/brand-neptune.webp",
+    "slot": "brand-neptune"
+  },
+  {
+    "source": "p05.png",
+    "file": "assets/photos/destination-chiang-rai.webp",
+    "slot": "destination-chiang-rai"
+  },
+  {
+    "source": "p06.png",
+    "file": "assets/photos/destination-chiang-mai.webp",
+    "slot": "destination-chiang-mai"
+  },
+  {
+    "source": "p07.png",
+    "file": "assets/photos/destination-bangkok.webp",
+    "slot": "destination-bangkok"
+  },
+  {
+    "source": "p08.png",
+    "file": "assets/photos/destination-pattaya-chonburi.webp",
+    "slot": "destination-pattaya-chonburi"
+  },
+  {
+    "source": "p09.png",
+    "file": "assets/photos/destination-koh-samui.webp",
+    "slot": "destination-koh-samui"
+  },
+  {
+    "source": "p10.png",
+    "file": "assets/photos/destination-krabi.webp",
+    "slot": "destination-krabi"
+  },
+  {
+    "source": "p11.png",
+    "file": "assets/photos/destination-phang-nga.webp",
+    "slot": "destination-phang-nga"
+  },
+  {
+    "source": "p12.png",
+    "file": "assets/photos/destination-phuket.webp",
+    "slot": "destination-phuket"
+  },
+  {
+    "source": "Northern All Star-01.png",
+    "file": "assets/brands/northern-color.png"
+  },
+  {
+    "source": "Northern All Star-02.png",
+    "file": "assets/brands/northern-white.png"
+  },
+  {
+    "source": "neptune.png",
+    "file": "assets/brands/neptune.png"
+  },
+  {
+    "source": "klook-logo.png",
+    "file": "assets/brands/klook.png"
+  },
+  {
+    "source": "gyg-C24m5bOE.svg",
+    "file": "assets/brands/getyourguide.svg"
+  },
+  {
+    "source": "viator-logo.png",
+    "file": "assets/brands/viator.png"
+  },
+  {
+    "source": "headout-logo.png",
+    "file": "assets/brands/headout.png"
+  },
+  {
+    "source": "1678763398474.pelago_x_sia_logo_dark.png",
+    "file": "assets/brands/pelago.png"
+  },
+  {
+    "source": "Central_Pattana_Logo_AW_Stacked_BG_RGB_111119_Artboard 1 copy 17.png",
+    "file": "assets/brands/central-pattana.png"
+  },
+  {
+    "source": "tripcom-logo-png-svg.webp",
+    "file": "assets/brands/trip-com.webp"
+  },
+  {
+    "source": "codex-clipboard-856091c6-293f-4201-9d5f-d17b6eaf3c84.png",
+    "file": "assets/photos/b2b-platform.webp",
+    "slot": "b2b-platform"
+  },
+  {
+    "source": "Screenshot 2569-11-14 at 21.39.41.png",
+    "file": "assets/photos/novatrip-website.webp",
+    "slot": "novatrip-website"
+  },
+  {
+    "source": "codex-clipboard-1ff2abd9-b397-48f9-9d76-5c8681a2dfc5.png",
+    "file": "assets/photos/novatrip-promo.webp",
+    "slot": "brand-novatrip",
+    "replaces": [
+      "assets/photos/brand-novatrip.webp",
+      "assets/photos/novatrip-website.webp"
+    ]
+  },
+  {
+    "source": "codex-clipboard-ea004687-b30d-4100-8799-87d3741cbf9b.png",
+    "file": "assets/photos/b2b-business-growth.webp",
+    "slot": "b2b-platform",
+    "replaces": "assets/photos/b2b-platform.webp"
+  },
+  {
+    "source": "codex-clipboard-4433de09-795d-4403-bbe0-39a9f9e08f4f.png",
+    "file": "assets/photos/b2b-business-growth-v2.webp",
+    "slot": "b2b-platform",
+    "replaces": "assets/photos/b2b-business-growth.webp"
+  },
+  {
+    "source": "https://www.kkday.com/static/en/about/TermsAndConditions.html",
+    "file": "assets/brands/kkday.svg",
+    "retrieved": "2026-11-15",
+    "note": "Original header SVG decoded from the official page data URI; colors and geometry unchanged."
+  },
+  {
+    "source": "https://commons.wikimedia.org/wiki/File:Trip.com_logo.svg",
+    "download": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Trip.com_logo.svg",
+    "file": "assets/brands/trip-com.svg",
+    "retrieved": "2026-11-15",
+    "replaces": "assets/brands/trip-com.webp",
+    "note": "Transparent vector logo; original geometry and colors unchanged."
+  }
+]
