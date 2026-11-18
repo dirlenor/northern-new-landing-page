@@ -9,6 +9,8 @@
 - PM2 เดิม: `northern-landing`, รัน Next.js ด้วย `start -p 3003`
 - มี `package-lock.json` ที่แก้ในเครื่องและ `server.js` ที่ยังไม่เข้า Git จึงเก็บโฟลเดอร์เดิมไว้ทั้งชุด
 - เว็บใหม่: `C:\apps\northern-2026`, PM2 ชื่อ `northern-2026`, พอร์ต `3003`
+- ปลายทางใหม่ที่ผู้ใช้เลือก: `https://github.com/dirlenor/northern-new-landing-page.git` (public)
+- เก็บเว็บเดิมใน repo ปลายทางไว้ที่ branch `codex/backup-before-2026-20261118`
 
 ## ติดตั้งและตรวจเว็บใหม่ก่อนสลับ
 
@@ -16,14 +18,12 @@
 
 ```bat
 cd /d C:\apps
-git clone https://6catdev@github.com/6catdev/northern-2026.git northern-2026
+git -c credential.helper= clone https://github.com/dirlenor/northern-new-landing-page.git northern-2026
 cd /d C:\apps\northern-2026
 node --test server.test.js
 ```
 
-repo ใหม่เป็น private จึงระบุบัญชี `6catdev` ใน URL เพื่อให้ Git Credential Manager เลือกบัญชีที่ถูกต้อง ถ้ามีหน้าต่างเข้าสู่ระบบ ให้ใช้บัญชี `6catdev` และทำขั้นตอนยืนยันตัวตนในหน้า GitHub โดยตรง การตั้ง `git config user.name` ไม่ได้เปลี่ยนบัญชีที่ใช้ดาวน์โหลด repo
-
-ถ้า GitHub ตอบ `Repository not found` ให้ตรวจว่าเบราว์เซอร์ที่เข้าสู่ระบบด้วย `6catdev` เปิด `https://github.com/6catdev/northern-2026` ได้หรือไม่ และดูบัญชีที่บันทึกไว้ด้วย `git credential-manager github list` ไม่ต้องล้าง credential ทั้งเครื่อง เพราะ VPS มีโปรเจกต์อื่นใช้งานอยู่
+repo ปลายทางนี้เป็น public จึงอ่านแบบ anonymous ได้ คำสั่ง `-c credential.helper=` ปิดการใช้ credential ที่บันทึกไว้เฉพาะการ clone ครั้งนี้ ไม่เปลี่ยน Git config หรือบัญชีของโปรเจกต์อื่น ต้องอัปเว็บใหม่เข้า `main` ของปลายทางก่อนใช้คำสั่งนี้
 
 ถ้า clone หรือการทดสอบไม่ผ่าน ให้หยุดตรงนี้ เว็บเดิมยังทำงานอยู่
 
