@@ -16,10 +16,14 @@
 
 ```bat
 cd /d C:\apps
-git clone https://github.com/6catdev/northern-2026.git northern-2026
+git clone https://6catdev@github.com/6catdev/northern-2026.git northern-2026
 cd /d C:\apps\northern-2026
 node --test server.test.js
 ```
+
+repo ใหม่เป็น private จึงระบุบัญชี `6catdev` ใน URL เพื่อให้ Git Credential Manager เลือกบัญชีที่ถูกต้อง ถ้ามีหน้าต่างเข้าสู่ระบบ ให้ใช้บัญชี `6catdev` และทำขั้นตอนยืนยันตัวตนในหน้า GitHub โดยตรง การตั้ง `git config user.name` ไม่ได้เปลี่ยนบัญชีที่ใช้ดาวน์โหลด repo
+
+ถ้า GitHub ตอบ `Repository not found` ให้ตรวจว่าเบราว์เซอร์ที่เข้าสู่ระบบด้วย `6catdev` เปิด `https://github.com/6catdev/northern-2026` ได้หรือไม่ และดูบัญชีที่บันทึกไว้ด้วย `git credential-manager github list` ไม่ต้องล้าง credential ทั้งเครื่อง เพราะ VPS มีโปรเจกต์อื่นใช้งานอยู่
 
 ถ้า clone หรือการทดสอบไม่ผ่าน ให้หยุดตรงนี้ เว็บเดิมยังทำงานอยู่
 
