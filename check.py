@@ -3,6 +3,7 @@ import os
 import tempfile
 from pathlib import Path
 from html.parser import HTMLParser
+from urllib.parse import urlsplit
 from playwright.sync_api import sync_playwright, expect
 
 ROOT = Path(__file__).resolve().parent
@@ -65,6 +66,9 @@ with sync_playwright() as p:
 
     # Local assets and no dead links; destinations without supplied URLs stay non-interactive.
     for source in page.locator('img[src], link[rel="stylesheet"], script[src]').evaluate_all("els => els.map(el => el.getAttribute('src') || el.getAttribute('href'))"):
+        # The live proxy can inject external analytics scripts; these aren't repo files.
+        if urlsplit(source).scheme or urlsplit(source).netloc:
+            continue
         assert (ROOT / source).is_file() and (ROOT / source).stat().st_size, source
     assert page.evaluate("Array.from(document.images).every(img => img.complete && img.naturalWidth > 0)")
     assert page.evaluate("document.fonts.check('16px Inter')")
